@@ -99,8 +99,8 @@ export default {
       var data = {
         entidad: this.deudas.entidad,
         tipoDeuda: this.deudas.tipoDeuda,
-        montoTotal: this.deudas.montoTotal,
-        cuota: this.deudas.cuota,
+        montoTotal: parseInt(this.deudas.montoTotal),
+        cuota: parseInt(this.deudas.cuota),
         fechaPago: this.deudas.fechaPago
       };
       console.log(data);
