@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="app">
     <b-form @submit="addDeuda" v-if="show">
       <b-form-group
         id="input-group-entidad"
@@ -16,7 +16,12 @@
       </b-form-group>
 
       <b-form-group id="tipoDeuda" label="Tipo de deuda:" label-for="input-3">
-        <b-form-select id="input-2" v-model="deudas.tipoDeuda" :options="tipoDeuda" required></b-form-select>
+        <b-form-select
+          id="input-tipoDeuda"
+          v-model="deudas.tipoDeuda"
+          :options="tipoDeuda"
+          required
+        ></b-form-select>
       </b-form-group>
 
       <b-form-group
@@ -57,43 +62,60 @@
         label-for="input-5"
         description="Ingrese el dia del mes a pagar"
       >
-        <b-form-input id="input-cuota" v-model="deudas.fechaPago" required placeholder="d"></b-form-input>
+        <b-form-input id="input-fechaPago" v-model="deudas.fechaPago" required placeholder="d"></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="submit" variant="outline-primary">Registrar deuda</b-button>
     </b-form>
   </div>
 </template>
 
 <script>
 export default {
+  beforeMount() {},
   data() {
     return {
       deudas: {
         entidad: "",
-        tipoDeuda: null,
-        montoTotal: "",
-        cuota: "",
+        tipoDeuda: "",
+        tarjetas: "",
+        montoTotal: 0,
+        cuota: 0,
         fechaPago: ""
       },
       tipoDeuda: [
-        { value: null, text: "Please select an option" },
+        
         { value: "a", text: "Deuda con monto definido" },
         { value: "b", text: "Deuda con monto no definido" }
       ],
+
       show: true,
       deuda: [{}]
     };
   },
   methods: {
     addDeuda() {
-      this.deuda.push({
+      let url = "http://localhost:81/deudas/";
+      var data = {
         entidad: this.deudas.entidad,
         tipoDeuda: this.deudas.tipoDeuda,
-        montoTotal: this.deudas.montoTotal,
-        cuota: this.deudas.cuota,
+        montoTotal: parseInt(this.deudas.montoTotal),
+        cuota: parseInt(this.deudas.cuota),
         fechaPago: this.deudas.fechaPago
-      });
+      };
+      console.log(data);
+
+      //data.montoTotal.replace(/['"]+/g, "")
+      this.$axios
+        .post(url, data)
+        .then(response => {
+          console.log(response);
+          console.log("guardas la info");
+          this.$router.push("/");
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };
