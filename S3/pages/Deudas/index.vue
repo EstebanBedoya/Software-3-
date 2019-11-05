@@ -89,10 +89,9 @@ export default {
   },
   methods: {
     deleteCard(index, id) {
-      let url = `http://localhost:81/deudas/${id}`;
 
       this.$axios
-        .delete(url, id)
+        .delete(`http://localhost:81/deudas/${id}`, id)
         .then(response => {
           console.log(response);
         })
@@ -102,9 +101,8 @@ export default {
       this.cards.splice(index, 1);
     },
     getAllRecords() {
-      let url = "http://localhost:81/deudas/";
 
-      this.$axios.get(url).then(response => {
+      this.$axios.get("http://localhost:81/deudas/").then(response => {
         // console.log(response.data.deudas);
 
         if (response.data.error) {
@@ -115,16 +113,9 @@ export default {
         }
       });
     },
-    restarMonto(id) {
-      let url = `http://localhost:81/deudas/${id}`;
-      this.$axios.put(url, id).then(response => {
-        console.log(response);
-      });
-    },
     getAllTarjetas() {
-      let url = `http://localhost:81/tarjetas/`;
 
-      this.$axios.get(url).then(response => {
+      this.$axios.get(`http://localhost:81/tarjetas/`).then(response => {
         if (response.data.error) {
           this.errorMessage = reponse.data.message;
         } else {
@@ -134,8 +125,7 @@ export default {
       });
     },
     addTarjetaInDeuda(id, value) {
-      let url = `http://localhost:81/deudas/${id}/${value}`;
-      this.$axios.put(url, id, value).then(response => {
+      this.$axios.put(`http://localhost:81/deudas/${id}/${value}`, id, value).then(response => {
         console.log(response);
       });
     },
