@@ -14,7 +14,7 @@ module.exports = app => {
             })
         });
     })
-    app.post('/login/auth/', (req, res) => {
+    app.get('/login/auth/', (req, res) => {
 
         db.usuarios.find({
             $and: [

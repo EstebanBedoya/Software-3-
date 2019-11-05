@@ -84,11 +84,11 @@ export default {
         fechaPago: ""
       },
       tipoDeuda: [
-        { value: null, text: "Please select an option" },
+        
         { value: "a", text: "Deuda con monto definido" },
         { value: "b", text: "Deuda con monto no definido" }
       ],
-      
+
       show: true,
       deuda: [{}]
     };
@@ -104,7 +104,7 @@ export default {
         fechaPago: this.deudas.fechaPago
       };
       console.log(data);
-      
+
       //data.montoTotal.replace(/['"]+/g, "")
       this.$axios
         .post(url, data)

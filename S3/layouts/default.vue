@@ -1,5 +1,6 @@
 <template>
   <div>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <div>
       <b-navbar toggleable="lg" type="dark" variant="dark">
         <b-navbar-brand to="/Deudas">APO</b-navbar-brand>

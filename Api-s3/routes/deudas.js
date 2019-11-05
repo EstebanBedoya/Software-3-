@@ -29,8 +29,6 @@ module.exports = app => {
         }
     })
 
-
-
     app.get('/deudas', (req, res) => {
         db.deudas.find((err, deudas) => {
             res.json({
