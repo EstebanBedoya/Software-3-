@@ -3,7 +3,7 @@
     <b-card header="Deudas" header-bg-variant="info" header-text-variant="white">
       <template v-slot:header>
         Deudas
-        <b-button  style="float:right"  :to="'/deudas/registrarDeuda'" variant="primary">
+        <b-button  style="float:right"  :to="'/deudas/registrarDeuda'" variant="outline-light" v-b-popover.hover.top="'Agregar deuda'">
           <i class="material-icons">add</i>
         </b-button>
       </template>

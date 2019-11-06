@@ -15,12 +15,13 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="tipoDeuda" label="Tipo de deuda:" label-for="input-3">
+      <b-form-group id="tipoDeuda" label="Tipo de deuda:" label-for="input-3" >
         <b-form-select
           id="input-tipoDeuda"
           v-model="deudas.tipoDeuda"
           :options="tipoDeuda"
           required
+          
         ></b-form-select>
       </b-form-group>
 
@@ -60,6 +61,7 @@
         label="fecha de pagos:"
         type="number"
         label-for="input-5"
+        
         description="Ingrese el dia del mes a pagar"
       >
         <b-form-input id="input-fechaPago" v-model="deudas.fechaPago" required placeholder="d"></b-form-input>
