@@ -18,6 +18,7 @@
             <b-card-text>Monto total: {{deuda.montoTotal}}</b-card-text>
             <b-card-text>Cuota: {{deuda.cuota}}</b-card-text>
             <b-card-text>Proximo pago: {{deuda.fechaPago}}</b-card-text>
+            <b-card-text>Tarjeta: {{deuda.numeroTarjeta}}</b-card-text>
 
             <b-badge
               href="#"
